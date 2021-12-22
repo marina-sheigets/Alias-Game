@@ -13,7 +13,7 @@
         <div class="menu">
             <ul>
                 <li> <a href="Rules.html">Правила</a></li>
-                <li><a href="settings.php">Налаштування</a></li>
+                
             </ul>
         </div>
         <div class="list_command">Список команд</div>
@@ -39,14 +39,16 @@
                 </div>
                 <span id="ss" onclick="count()">Додати команду</span>
                 <br><br>
-                <button class="play">Грати</button>
+                <form>
+                    <input type="button" class="play" value="Далі" onClick='location.href="settings.php"'>
+                </form>
     </div>   
         
 
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-
+<!--
     <script>
 
     $(document)
@@ -102,6 +104,9 @@
 
         
         </script>
+    -->
+
+    <script src="teams.js" ></script>
 
     
 </body>
