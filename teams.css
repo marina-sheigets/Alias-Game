@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Light&family=Open+Sans:wght@300&display=swap');
+*{
+    padding:0;
+    margin:0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+body{
+    background:#403cac;
+}
+
+.main{
+    width:50%;
+    margin:100px auto;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+.game_name{
+   
+    text-align:center;
+    font-weight:900;
+    letter-spacing: 5px;
+    font-size:50px;
+    margin: 0 auto 30px;
+}
+
+.game_name a :active,
+.game_name a {
+    text-decoration: none;
+    color:#fae421;
+}
+
+.menu{
+    color:#fabc12;
+    width:70%;
+    margin:0 auto 30px;
+}
+
+.menu a :active,
+.menu a {
+    text-decoration: none;
+    color:#fabc12;
+}
+
+.menu ul{
+    display:flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.list_command{
+    text-align: center;
+    font-size:25px;
+    color:rgb(177, 216, 250);
+    font-weight:800;
+    width:80%;
+    margin:0 auto 20px;
+}
+
+.del_variant{
+    color:rgb(177, 216, 250);
+}
+
+
+
+.const_command{
+    padding-right:15px;
+
+}
+.const_command, #variants{
+    text-align: center;
+}
+
+#variants{
+    margin-bottom:20px;
+}
+
+#ss{
+    display:block;
+    width:40%;
+    margin:20px auto;
+    text-align: center;
+    color:rgb(177, 216, 250);
+    font-size: 18px;
+}
+input{
+    width:200px;
+    height:30px;
+    background-color:#403cac;
+    border:none;
+    border-bottom:1px solid grey;
+    outline:none;
+    color:#fae421;
+    font-size:20px;
+}
+
+.play{
+    border:none;
+    background-color:#fabc12;
+    width:100px;
+    height:30px;
+    border-radius:20px;
+    font-size: 18px;
+    font-weight: 600;
+    color:rgb(71, 53, 46);
+}
+
+
