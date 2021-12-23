@@ -2,50 +2,39 @@
    // require_once __DIR__ ."/database/pdo.php";
     require_once __DIR__ ."/functions/functions.php";
 
- 
 
-   $conn = mysqli_connect("localhost", "root",  "234565Aa","kursova_db");
-          
-   // Check connection
-
-   if($conn === false){
-       die("ERROR: Could not connect. " 
-           . mysqli_connect_error());
-   }
-    
    if(isset($_POST["send"]))
-   {
-        // Taking all 5 values from the form data(input)
-        $email =  $_REQUEST['email'];
-        $message =  $_REQUEST['message'];
+    {
+        require_once __DIR__ ."/database/pdo.php";
+        $email=$_POST["email"];
+        $message=$_POST["message"];
+        $state=false;
+        $gratitude=false;
+            if((empty($email)&&empty($message)) || (empty($email)|| empty($message)))
+            {
+               
+                $state=true;
 
-        // Performing insert query execution
-        // here our table name is college
-
-        $errors=validateInput($_POST);
-
-        if(empty($errors))
-      {
-
-            $sql = "INSERT INTO `feedback`(`email`,`message`)  VALUES ('$email', '$message')";
+            }
+            else
+            {
+               
                 
-            if(mysqli_query($conn, $sql)){
+                $sql="INSERT INTO `feedback` (`email`,`message`)VALUES (:email,:message)";
+                $params= [
+                    'email'=>$email,
+                    'message'=>$message
+                ];
+                $dbh->prepare($sql)->execute($params);
 
-                    $state=mysqli_query($conn, $sql);
-                /*echo nl2br("\n$first_name\n $last_name\n "
-                    . "$gender\n $address\n $email");*/
-            } else{
-                    $state= "ERROR: Hush! Sorry $sql. " 
-                //echo "ERROR: Hush! Sorry $sql. " 
-                    . mysqli_error($conn);
+
+              //  $text="Дякуємо за відгук!";
+                $gratitude=true;
+            }
+        
+            
         }
-        
-        }   
-        
-    }
-    // Close connection
-    mysqli_close($conn);
-
+    
 
 ?>
 
@@ -60,6 +49,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
     <title>Зворотній зв'язок</title>
 </head>
 <body>
@@ -81,11 +72,6 @@
                  type="email" 
                  id="email-field" 
                  name="email"
-                 value=""
-                 
-                      <?=
-                         isset($errors["email"]) ? "is-invalid":""
-                      ?>"
                  >
               </li>
              
@@ -96,20 +82,24 @@
                 type="text"
                 name="message"
                 value=""
-                class="form-control  
-                <?=isset($errors["message"]) ? "is-invalid":""?>">
+                class="form-control"
                 </input>
               </li>
               <li class="button">
                 <button type="submit" name="send">Надіслати</button>
               </li>
-              <?php
-                if(isset($state))
-                {
-                    echo "<br><h3>Дякуємо за відгук !</h3>";
-                }
-              ?>
             </ul>
+            <p id="area" >
+            <?php
+                if(isset($state) && $state)
+                {
+                    echo 'Заповніть будь-ласка поля !';
+                }
+                if(isset($gratitude) && $gratitude){
+                    echo 'Дякуємо за відгук !';
+                }
+                ?>
+            </p>
           </form>
     </div>
     <style>
@@ -121,6 +111,10 @@
             background-color:#403cac;
             color:lightgrey;
 
+        }
+
+        #area{
+            margin-top:20px;
         }
          header{
             border-bottom:2px solid grey;

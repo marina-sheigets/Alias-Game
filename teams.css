@@ -14,6 +14,11 @@ body{
     width:50%;
     margin:100px auto;
     text-align: center;
+    
+}
+
+.form{
+    margin-top:30px;
 }
 
 a{
@@ -47,47 +52,7 @@ a{
     color:#fabc12;
 }
 
-.menu ul{
-    display:flex;
-    list-style: none;
-    justify-content: space-around;
-}
 
-.list_command{
-    text-align: center;
-    font-size:25px;
-    color:rgb(177, 216, 250);
-    font-weight:800;
-    width:80%;
-    margin:0 auto 20px;
-}
-
-.del_variant{
-    color:rgb(177, 216, 250);
-}
-
-
-
-.const_command{
-    padding-right:15px;
-
-}
-.const_command, #variants{
-    text-align: center;
-}
-
-#variants{
-    margin-bottom:20px;
-}
-
-#ss{
-    display:block;
-    width:40%;
-    margin:20px auto;
-    text-align: center;
-    color:rgb(177, 216, 250);
-    font-size: 18px;
-}
 input{
     width:200px;
     height:30px;
@@ -109,5 +74,10 @@ input{
     font-weight: 600;
     color:rgb(71, 53, 46);
 }
+
+li{
+    list-style-type: none;
+}
+
 
 

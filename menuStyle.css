@@ -74,21 +74,29 @@ p{
     font-weight:800;
 }
 
+
+.play:visited{
+    text-decoration: none; 
+   
+}
+/*
 .play a:active,
 .play a{
     text-decoration: none;
-    color:white;
+    color:#fc8403;
 }
+
+
 
 .play:visited 
 {
     text-decoration: none; 
     color:white;
 }
-
+*/
 .play:hover{
     border:2px solid #fc8403;
-    color:#fc8403;
+    color:white;
     background:white;
 }
 footer{

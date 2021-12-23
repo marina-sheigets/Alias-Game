@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="teams.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
     <title>Команди</title>
 </head>
 <body>
@@ -18,96 +20,52 @@
         </div>
         <div class="list_command">Список команд</div>
         <div class="const_command">
-            
-            <input type="text" value="Помідори" placeholder="Назва команди">
+        <form class="form" method="post">
+            <input type="text" value="" placeholder="Назва команди" id="command1" name="command1">
+            <br>
+            <input type="text" value="" placeholder="Назва команди" id="command2" name="command2">
+            <br>
+            <input type="submit" name="play" style="margin-top:30px" class="play" value="Далі"  id="next">
+        </form>
 
         </div>
-        <div id="variants">
-            
-                    <div class="control-group" id="uzz">
-            
-            
-                        <div class="controls">
-            
-                            <input  type="text"  placeholder="Назва команди" name="name[]">
-                            <a class="del_variant" onclick="showButton()">X</a>
-            
-                        </div>
-            
-                    </div>
-                
-                </div>
-                <span id="ss" onclick="count()">Додати команду</span>
-                <br><br>
-                <form>
-                    <input type="button" class="play" value="Далі" onClick='location.href="settings.php"'>
-                </form>
-    </div>   
-        
+
 
     
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <?php
+        require_once __DIR__ .'/database/pdo.php';
 
-<!--
-    <script>
-
-    $(document)
-        .ready(function () {
-            var variant = $('#uzz')
-                .clone(true);
-            $('#ss')
-                .click(function () {
-                    $(variant)
-                        .clone(true)
-                        .appendTo('#variants')
-                        .fadeIn('slow')
-                        .find("input[name*=name]")
-                        .focus();
-                });
-            $(document)
-               .on('click', 'a.del_variant', function () {
-                    $(this)
-                        .parents(".control-group")
-                        .remove();
-                });
-       });
-    </script>
-
-    <script>
-        function count()
+        if(isset($_POST["play"]))
         {
-            //margin();
-            //alert(document.getElementById('variants').getElementsByTagName('input').length);
-            if(document.getElementById('variants').getElementsByTagName('input').length>1)
+            if(($_POST["command1"]=="") || ($_POST["command2"]==""))
             {
-                
-                document.getElementById('ss').style.display = 'none';
-
+                echo "<h2>Введіть назву команди</h2>";
             }
-            else{
-                //document.getElementById('ss').style.margin-top = '20px';
+            else
+            {
+                $command1=$_REQUEST["command1"];
+                $command2=$_REQUEST["command2"];
+               
+
+                $sql="INSERT INTO `commands` (`command_name`)VALUES (:command1)";
+                $params= [
+                    "command1"=>$command1,
+                ];
+                $dbh->prepare($sql)->execute($params);
+
+                $sql="INSERT INTO `commands` (`command_name`)VALUES (:command2)";
+                $params= [
+                    "command2"=>$command2,
+                ];
+                $dbh->prepare($sql)->execute($params);
+
+
+                header("Location: settings.php");
             }
-            
-            
-        }
-
-        function margin(){
-            //document.getElementById('ss').style.margin-top = '20px';
-        }
-
-        function showButton()
-        {
-
-            document.getElementById('ss').style.display = 'inline';
-            
-        }
-
         
-        </script>
-    -->
-
-    <script src="teams.js" ></script>
-
-    
+            
+        }
+    ?>
+<script src="saveNameCommands.js"></script>
 </body>
 </html>
