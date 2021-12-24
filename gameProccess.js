@@ -12,7 +12,8 @@ buttonPlay.onclick=function()
           span.innerHTML = counter;
        }
        if (counter === 0) {
-          alert('sorry, out of time');
+            document.getElementById("hide").style.display='inline';
+            document.getElementById("list_words").style.display='none';
           clearInterval(counter);
         }
       }, 1200);
@@ -25,30 +26,116 @@ $(document).ready(function()
     {
         e.preventDefault();
         var amountPoints=localStorage.getItem('points');
-        var resultTime=localStorage.getItem('time');
-        var skip=localStorage.getItem('skip');
         var language=localStorage.getItem('language');
+        if(language=="English")
+        {
+            language="eng";
+        }
+        else{
+            language="ru";
+        }
+        
 
         $.ajax({
             type:"POST",
             url:"getDatasettings.php",
             data:{
-                'amountPoints':amountPoints,
-                'resultTime':resultTime,
-                'skip':skip,
+                'amountPoints':amountPoints,                
                 'language':language
                 
             },
             dataType: "text",
             success:function(res)
             {
-                alert(res);
+                $('#word').html(res);
                 
             }
         });
       
     });
 });
+
+
+
+
+$(document).ready(function()
+{
+    $('#skip').click(function(e)
+    {
+        e.preventDefault();
+        var skip=localStorage.getItem('skip');
+        var language=localStorage.getItem('language');
+        var name_command=$('#name_command').html();
+        var prev_word=$('#word').html();
+        if(language=="English")
+        {
+            language="eng";
+        }
+        else{
+            language="ru";
+        }
+
+        $.ajax({
+            type:"POST",
+            url:"setWhenSkip.php",
+            data:{
+                'skip':skip,
+                'language':language,
+                'name_command':name_command,
+                'prev_word':prev_word,
+            },
+            dataType: "text",
+            success:function(res)
+            {
+                
+                $('#word').html(res);
+                
+            }
+        });
+      
+    });
+});
+
+$(document).ready(function()
+{
+    $('#guess').click(function(e)
+    {
+        e.preventDefault();
+        var language=localStorage.getItem('language');
+        var name_command=$('#name_command').html();
+        var prev_word=$('#word').html();
+        if(language=="English")
+        {
+            language="eng";
+        }
+        else{
+            language="ru";
+        }
+
+        $.ajax({
+            type:"POST",
+            url:"setWhenGuess.php",
+            data:{
+                'language':language,
+                'name_command':name_command,
+                'prev_word':prev_word,
+            },
+            dataType: "text",
+            success:function(res)
+            {
+                
+                $('#word').html(res);
+                
+            }
+        });
+      
+    });
+});
+
+
+
+
+
 
 
 

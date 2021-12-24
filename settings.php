@@ -10,15 +10,10 @@
     <div class="main">
         <form method="post">
             <div class="title">Налаштування</div>
-            <div class="amount_points">
-                <p>Максимальна кількість слів:</p>
-                <input type="range" min="10" max="40" step="1" value="25"
-                class="slider" id="firstRange" name="firstRange" oninput="showAmountPoints()">
-                <span id="one" style="margin-left:30px"></span>
-            </div>
+           
             <div>
                 <p>Час раунду в секундах</p>
-                <input type="range" min="30" max="120" step="1" value="75" class="slider" name="secondRange" id="secondRange" oninput="showAmountTime()">
+                <input type="range" min="10" max="120" step="1" value="75" class="slider" name="secondRange" id="secondRange" oninput="showAmountTime()">
                 <span id="second" style="margin-left:30px"></span>
             </div>
             <div>
@@ -43,9 +38,6 @@
         
     </div>
 
-    <script>
-       
-    </script>
     <script src="jquery.js"></script>
     <script src="settings.js"></script>
 </body>

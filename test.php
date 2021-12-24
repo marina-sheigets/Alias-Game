@@ -16,33 +16,19 @@
         <p>Час раунду в секундах</p>
         <input type="range" min="30" max="120" step="1" value="75" class="slider" id="secondRange" oninput="showAmountTime()">
         <span id="second" style="margin-left:30px"></span>
+
         <input type="submit" class="play" id="play" value="Грати" name="button">
 </form>
 
-<script>
+<?php
 
+    if(isset($_POST["button"])){
 
-$(document).ready(function()
-{
-    $('form').submit(function(e)
-    {
-        e.preventDefault();
-        /*var data_array=$(this).serialize();
-        $.ajax({
-            type:"POST",
-            url:"getDatasettings.php",
-            data:data_array,
-            success:function()
-            {
-                alert("Успішно");
-            }
-        });*/
-        alert("123");
-    });
-});
-
-</script>
-
+    $wor=random_int(0,40);
+    echo $wor;
+    echo gettype($wor);
+    }
+?>
 
 
 

@@ -21,11 +21,27 @@
             </div>
             <div id="list_words">
                     <h1 id="word"></h1>
-                    <input type="button"  id="skip" value="Пропустити" '>
-                    <input type="button"  id="guess" value="Відгадано" '>
+                    <input type="button" class="word_button" id="skip" value="Пропустити" '>
+                    <input type="button" class="word_button" id="guess" value="Відгадано" '>
             </div>
         </form>
+        <div id="hide">
+            <input type="button"  class="word_button" id="next_command" value="Далі"'>
+        </div>
     </div>
+    
+<script>
+     var buttonNext=document.getElementById("next_command");
+    buttonNext.onclick=function()
+        {
+            var command2=localStorage.getItem("command2");
+            localStorage.setItem("command1",command2);
+            location.reload();
+        }
+</script>
+
+
+
 
 <script src="settings.js"></script>
 <script src="readyDocument.js"></script>

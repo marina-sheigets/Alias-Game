@@ -25,6 +25,17 @@ body{
     color:#fc8403;
 }
 
+#next_command{
+    text-align: center;
+}
+
+#hide
+{
+    display:none;
+    width:40%;
+    margin:auto;
+    
+}
 #count{
     
     border:2px double white;

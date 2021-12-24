@@ -6,3 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('name_command').innerHTML=name_command1;
 
   });
+
+  
+
