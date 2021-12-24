@@ -15,6 +15,7 @@ buttonPlay.onclick=function()
             document.getElementById("hide").style.display='inline';
             document.getElementById("list_words").style.display='none';
           clearInterval(counter);
+          
         }
       }, 1200);
 }
@@ -27,6 +28,7 @@ $(document).ready(function()
         e.preventDefault();
         var amountPoints=localStorage.getItem('points');
         var language=localStorage.getItem('language');
+
         if(language=="English")
         {
             language="eng";
@@ -42,18 +44,44 @@ $(document).ready(function()
             data:{
                 'amountPoints':amountPoints,                
                 'language':language
-                
             },
             dataType: "text",
-            success:function(res)
+            success:function(word)
             {
-                $('#word').html(res);
+                $('#word').html(word);
                 
             }
         });
       
     });
 });
+
+$(document).ready(function()
+{
+    $('#startClock').click(function(e)
+    {
+        e.preventDefault();
+       
+        var task=localStorage.getItem('task');
+
+
+        $.ajax({
+            type:"POST",
+            url:"task.php",
+            data:{
+                'task':task 
+            },
+            dataType: "text",
+            success:function(word)
+            {
+                $('#task').html(word);
+                
+            }
+        });
+      
+    });
+});
+
 
 
 
@@ -65,6 +93,7 @@ $(document).ready(function()
         e.preventDefault();
         var skip=localStorage.getItem('skip');
         var language=localStorage.getItem('language');
+        var task=localStorage.getItem('task');
         var name_command=$('#name_command').html();
         var prev_word=$('#word').html();
         if(language=="English")
@@ -83,6 +112,7 @@ $(document).ready(function()
                 'language':language,
                 'name_command':name_command,
                 'prev_word':prev_word,
+                'task':task  
             },
             dataType: "text",
             success:function(res)
@@ -96,6 +126,38 @@ $(document).ready(function()
     });
 });
 
+
+
+
+
+$(document).ready(function()
+{
+    $('#skip').click(function(e)
+    {
+        e.preventDefault();
+        
+        var task=localStorage.getItem('task');
+
+        $.ajax({
+            type:"POST",
+            url:"task.php",
+            data:{
+               
+                'task':task  
+            },
+            dataType: "text",
+            success:function(res)
+            {
+                
+                $('#task').html(res);
+                
+            }
+        });
+      
+    });
+});
+
+
 $(document).ready(function()
 {
     $('#guess').click(function(e)
@@ -103,6 +165,7 @@ $(document).ready(function()
         e.preventDefault();
         var language=localStorage.getItem('language');
         var name_command=$('#name_command').html();
+        var task=localStorage.getItem('task');
         var prev_word=$('#word').html();
         if(language=="English")
         {
@@ -119,12 +182,42 @@ $(document).ready(function()
                 'language':language,
                 'name_command':name_command,
                 'prev_word':prev_word,
+                'task':task  
             },
             dataType: "text",
             success:function(res)
             {
                 
                 $('#word').html(res);
+                
+            }
+        });
+      
+    });
+});
+
+
+$(document).ready(function()
+{
+    $('#guess').click(function(e)
+    {
+        e.preventDefault();
+        
+        var task=localStorage.getItem('task');
+       
+
+        $.ajax({
+            type:"POST",
+            url:'task.php',
+            data:{
+               
+                'task':task  
+            },
+            dataType: "text",
+            success:function(res)
+            {
+                
+                $('#task').html(res);
                 
             }
         });

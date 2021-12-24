@@ -20,7 +20,8 @@
                 
             </div>
             <div id="list_words">
-                    <h1 id="word"></h1>
+                    <div id="word"></div>
+                    <p id="task"></p>
                     <input type="button" class="word_button" id="skip" value="Пропустити" '>
                     <input type="button" class="word_button" id="guess" value="Відгадано" '>
             </div>
@@ -34,9 +35,14 @@
      var buttonNext=document.getElementById("next_command");
     buttonNext.onclick=function()
         {
+            if(localStorage.getItem('command1')==localStorage.getItem('command2'))
+            {
+                document.location.href="statistics.php";
+            }else{
             var command2=localStorage.getItem("command2");
             localStorage.setItem("command1",command2);
             location.reload();
+            }
         }
 </script>
 

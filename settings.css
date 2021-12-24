@@ -48,6 +48,10 @@ input:checked[type="checkbox"]:before
     left:30px;
 }
 
+#word{
+    color:#fc8403;
+    margin-bottom: 30px;
+}
 
 .main{
     width:60%;

@@ -36,6 +36,11 @@ body{
     margin:auto;
     
 }
+
+#task{
+    margin-top:20px;
+    margin-bottom: 30px;
+}
 #count{
     
     border:2px double white;
@@ -88,6 +93,11 @@ form{
 h1{
     color:#fc8403;
     margin-bottom:20px;
+}
+
+#word{
+    color:#fc8403;
+    font-size: 40px;
 }
 
 #list_words{

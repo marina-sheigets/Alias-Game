@@ -18,7 +18,11 @@
             </div>
             <div>
                 <p>Штраф за пропуск слова</p>
-                <input type="checkbox" name="switch" id="switch" />
+                <input type="checkbox" name="switch" id="switch"  />
+            </div>
+            <div>
+                <p>Додаткове завдання</p>
+                <input type="checkbox" name="task" id="task" />
 
             </div>
             <div>
@@ -31,7 +35,7 @@
             </div>
             <div>
             
-                <input type="submit" class="play" id="play" value="Грати" '>
+                <input type="button" class="play" id="play" value="Грати" '>
             </div>
         </form>
 

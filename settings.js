@@ -14,11 +14,12 @@ buttonPlay.onclick=function()
     
     var resultTime=document.getElementById("secondRange").value;
     var skip=document.getElementById("switch").checked;
+    var task=document.getElementById("task").checked;
     var language=document.getElementById("language").value;
 
-   
     localStorage.setItem("time",resultTime);
     localStorage.setItem("skip",skip);
+    localStorage.setItem("task",task);
     localStorage.setItem("language",language);
     document.location.href = "game.php";
 }
