@@ -37,9 +37,9 @@
 
         if(isset($_POST["play"]))
         {
-            if(($_POST["command1"]=="") || ($_POST["command2"]==""))
+            if((strlen($_POST["command1"]<=0)) || (strlen($_POST["command2"]<=0)))
             {
-                echo "<h2>Введіть назву команди</h2>";
+                echo "<h2 style='margin-top:20px'>Введіть правильно назву команди</h2>";
             }
             else
             {

@@ -13,7 +13,7 @@
            
             <div>
                 <p>Час раунду в секундах</p>
-                <input type="range" min="10" max="120" step="1" value="75" class="slider" name="secondRange" id="secondRange" oninput="showAmountTime()">
+                <input type="range" min="10" max="300" step="1" value="100" class="slider" name="secondRange" id="secondRange" oninput="showAmountTime()">
                 <span id="second" style="margin-left:30px"></span>
             </div>
             <div>
@@ -33,8 +33,7 @@
                     <option>English</option>
                 </select>
             </div>
-            <div>
-            
+            <div>     
                 <input type="button" class="play" id="play" value="Грати" '>
             </div>
         </form>
